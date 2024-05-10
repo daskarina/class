@@ -1,66 +1,41 @@
-class Hello_world:
-    hello = "Hello"
-    _hello = "_Hello"
-    __hello = "__Hello"
-    def __init__(self):
-        self.world = "World"
-        self._world = "_World"
-        self.__world = "__World"
-    def printer(self):
-        print(self.hello)
-        print(self._hello)
-        print(self.__hello)
-        print(self.world)
-        print(self._world)
-        print(self.__world)
-class Hi(Hello_world):
-    def hi_print(self):
-        print(self.hello)
-        print(self.world)
-        print(self._hello)
-        print(self._world)
-        print(self.__hello)
-        print(self.__world)
+class Human:
+    def __init__(self, name="Human"):
+        self.name = name
+class Auto:
+    def __init__(self, brand):
+        self.brand = brand
+        self.passengers = []
 
-hello = Hello_world()
-hello.printer()
-hi = Hi()
-hi.hi_print()
+    def add_passenger(self, human):
+        self.passengers.append(human)
 
-class Hello:
+    def print_passengers_names(self):
+        if  self.passengers != []:
+            print(f"Names of {self.brand} passengers:")
+        for passenger in self.passengers:
+            print(passenger.name)
+        else:
+            print(f"There are no passengers in {self.brand}")
 
-    def __init__(self):
-        print("Hello!")
-class Hello_World(Hello):
-    def __init__(self):
-        super().__init__()
-        print("World!")
-hello_world = Hello_World()
+class Human:
+    def __init__(self, name="Human"):
+        self.name = name
 
-class Class1:
-    var = 20
-    def __init__(self):
-        self.var = 10
-class Class2(Class1):
-    def __init__(self):
-        print(self.var)
-        super().__init__()
-        print(self.var)
-        print(super().var)
+        class Auto:
+            def __init__(self, brand):
+                self.brand = brand
 
-class Grandparent:
-    def about(self):
-        print("I am GrandParent")
+            self.passengers = []
 
-    def about_myself(self):
-        print("I am Grandparent")
+            def add_passenger(self, human):
+                self.passengers.append(human)
 
-class Parent(Grandparent):
-    def about_myself(self):
-        print("I am Parent")
-class Child(Parent):
-    def __init__(self):
-        super().about()
-        super().about_myself()
+            def print_passengers_names(self):
+                if self.passengers != []:
+                    print(f"Names of {self.brand} passengers: ")
+                for passenger in self.passengers:
+                    print(passenger.name)
+                else:
+                    print(f"There are no passengers in {self.brand}")
 
-nick = Child()
+nick = Human("Nick")
