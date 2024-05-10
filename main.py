@@ -1,59 +1,66 @@
-import random
+class Hello_world:
+    hello = "Hello"
+    _hello = "_Hello"
+    __hello = "__Hello"
+    def __init__(self):
+        self.world = "World"
+        self._world = "_World"
+        self.__world = "__World"
+    def printer(self):
+        print(self.hello)
+        print(self._hello)
+        print(self.__hello)
+        print(self.world)
+        print(self._world)
+        print(self.__world)
+class Hi(Hello_world):
+    def hi_print(self):
+        print(self.hello)
+        print(self.world)
+        print(self._hello)
+        print(self._world)
+        print(self.__hello)
+        print(self.__world)
 
-class Student:
-    def __init__(self, name):
-        self.name = name
-        self.gladness = 50
-        self.progress = 0
-        self.alive = True
+hello = Hello_world()
+hello.printer()
+hi = Hi()
+hi.hi_print()
 
-    def to_study(self):
-        print('time to study')
-        self.progress += 0.12
-        self.gladness -= 3
+class Hello:
 
-    def to_sleep(self):
-        print("i will sleep")
-        self.gladness += 3
+    def __init__(self):
+        print("Hello!")
+class Hello_World(Hello):
+    def __init__(self):
+        super().__init__()
+        print("World!")
+hello_world = Hello_World()
 
-    def to_chill(self):
-        print("Rest time")
-        self.gladness += 5
-        self.progress -= 0.1
+class Class1:
+    var = 20
+    def __init__(self):
+        self.var = 10
+class Class2(Class1):
+    def __init__(self):
+        print(self.var)
+        super().__init__()
+        print(self.var)
+        print(super().var)
 
-    def is_alive(self):
-        if self.progress < -0.5:
-            print("Cast out…")
-            self.alive = False
-        elif self.gladness <= 0:
-            print("Depression…")
-             self.alive = False
-        elif self.progress > 5:
-             print("Passed externally…")
-             self.alive = False
+class Grandparent:
+    def about(self):
+        print("I am GrandParent")
 
-    def end_of_day(self):
-        print(f"Gladness = {self.gladness}")
-        print(f"Progress = {round(self.progress, 2)}")
+    def about_myself(self):
+        print("I am Grandparent")
 
-    def live(self, day):
-        day = "Day" + str(day) + "of" + self.name + "life"
-        print(f"{day:=^50}")
-        live_cube = random.randint(1, 3)
-        if live_cube == 1:
-            self.to_study()
-        elif live_cube == 2:
-            self.to_sleep()
-        elif live_cube == 3:
-            self.to_chill()
-        self.end_of_day()
-        self.is_alive ()
+class Parent(Grandparent):
+    def about_myself(self):
+        print("I am Parent")
+class Child(Parent):
+    def __init__(self):
+        super().about()
+        super().about_myself()
 
-nick = Student(name="Nick")
-for day in range(365):
-    if nick.alive == False:
-       break
-    nick.live(day)
-
-
-
+nick = Child()
