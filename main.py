@@ -1,41 +1,23 @@
-class Human:
-    def __init__(self, name="Human"):
-        self.name = name
-class Auto:
-    def __init__(self, brand):
-        self.brand = brand
-        self.passengers = []
-
-    def add_passenger(self, human):
-        self.passengers.append(human)
-
-    def print_passengers_names(self):
-        if  self.passengers != []:
-            print(f"Names of {self.brand} passengers:")
-        for passenger in self.passengers:
-            print(passenger.name)
+def checker(function):
+    def checker(*args, **kwargs):
+        try:
+            result = function(*args, **kwargs)
+        except Exception as exc:
+            print(f"We have problems {exc}")
         else:
-            print(f"There are no passengers in {self.brand}")
+            print(f"No problems. Result – {result}")
+    return checker
 
-class Human:
-    def __init__(self, name="Human"):
-        self.name = name
+def calculate(expression):
+ return eval(expression)
 
-        class Auto:
-            def __init__(self, brand):
-                self.brand = brand
+calculate = checker(calculate)
+calculate("2+2")
 
-            self.passengers = []
 
-            def add_passenger(self, human):
-                self.passengers.append(human)
 
-            def print_passengers_names(self):
-                if self.passengers != []:
-                    print(f"Names of {self.brand} passengers: ")
-                for passenger in self.passengers:
-                    print(passenger.name)
-                else:
-                    print(f"There are no passengers in {self.brand}")
 
-nick = Human("Nick")
+
+
+
+
