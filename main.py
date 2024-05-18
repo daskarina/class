@@ -1,23 +1,24 @@
-def checker(function):
-    def checker(*args, **kwargs):
-        try:
-            result = function(*args, **kwargs)
-        except Exception as exc:
-            print(f"We have problems {exc}")
-        else:
-            print(f"No problems. Result – {result}")
-    return checker
+import unittest
+from main import *
 
-def calculate(expression):
- return eval(expression)
+class My_Test(unittest.TestCase):
 
-calculate = checker(calculate)
-calculate("2+2")
+    def test_args(self):
+        self.assertEqual(adder(2, 2), 4)
 
+    def test_kwargs(self):
+         self.assertEqual(adder(a=10, b=11), 21)
 
+    def test_mixed(self):
+        self.assertEqual(adder(1, a=2), 3)
 
+    def test_diff(self):
+        x = 10
+        y = 0
+        self.assertEqual(adder(0, -5, y, a=x), 5)
 
+    def test_wrong_datatype(self):
+        self.assertEqual(adder("5", "abc", 10), 15)
 
-
-
-
+if __name__ =="__main__":
+    unittest.main()
